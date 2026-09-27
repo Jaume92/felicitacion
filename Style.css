@@ -1,298 +1,3 @@
-/* =========================================================
-   CARRUSEL DEFINITIVO
-   EL MARCO SE ADAPTA A LA FOTO
-========================================================= */
-
-.photo-carousel{
-    position:relative;
-
-    width:fit-content;
-    max-width:100%;
-
-    margin:0 auto 24px;
-
-    overflow:visible;
-}
-
-
-/* =========================================================
-   VENTANA
-========================================================= */
-
-.photo-carousel-window{
-    position:relative;
-
-    width:fit-content;
-    max-width:100%;
-
-    height:auto;
-
-    margin:0 auto;
-
-    overflow:visible;
-
-    touch-action:pan-y;
-}
-
-
-/* =========================================================
-   SLIDES
-========================================================= */
-
-.photo-carousel-window .photo{
-    display:none;
-
-    position:relative;
-
-    width:auto;
-    height:auto;
-
-    max-width:100%;
-
-    overflow:visible;
-
-    background:transparent;
-
-    border-radius:18px;
-}
-
-
-/* FOTO ACTIVA */
-
-.photo-carousel-window .photo.active{
-    display:block;
-
-    width:auto;
-    height:auto;
-
-    max-width:100%;
-}
-
-
-/* =========================================================
-   IMAGEN
-========================================================= */
-
-.photo-carousel-window .photo img{
-    display:block;
-
-    position:relative;
-
-    width:auto;
-    height:auto;
-
-    max-width:100%;
-    max-height:78svh;
-
-    object-fit:contain;
-
-    object-position:center;
-
-    margin:0 auto;
-
-    border-radius:18px;
-
-    box-shadow:
-        0 18px 55px rgba(0,0,0,.25);
-}
-
-
-/* =========================================================
-   FLECHAS
-========================================================= */
-
-.carousel-arrow{
-    position:absolute;
-
-    top:50%;
-
-    z-index:50;
-
-    width:44px;
-    height:44px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:0;
-
-    border:1px solid rgba(255,255,255,.4);
-
-    border-radius:50%;
-
-    background:rgba(8,16,35,.82);
-
-    color:white;
-
-    cursor:pointer;
-
-    transform:translateY(-50%);
-
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-
-    box-shadow:
-        0 8px 24px rgba(0,0,0,.25);
-
-    transition:
-        background .2s ease,
-        border-color .2s ease,
-        transform .2s ease;
-}
-
-
-.carousel-prev{
-    left:-22px;
-}
-
-
-.carousel-next{
-    right:-22px;
-}
-
-
-.carousel-arrow:hover{
-    background:rgba(73,89,160,.95);
-
-    border-color:rgba(255,255,255,.8);
-}
-
-
-.carousel-arrow:active{
-    transform:
-        translateY(-50%)
-        scale(.92);
-}
-
-
-.carousel-arrow svg{
-    width:18px;
-    height:18px;
-
-    display:block;
-
-    fill:none;
-
-    stroke:currentColor;
-
-    stroke-width:2;
-
-    stroke-linecap:round;
-    stroke-linejoin:round;
-}
-
-
-/* =========================================================
-   CONTADOR
-========================================================= */
-
-.carousel-counter{
-    position:absolute;
-
-    right:12px;
-    bottom:12px;
-
-    z-index:50;
-
-    display:flex;
-    align-items:center;
-
-    gap:4px;
-
-    padding:7px 11px;
-
-    border:1px solid rgba(255,255,255,.25);
-
-    border-radius:999px;
-
-    background:rgba(8,16,35,.8);
-
-    color:white;
-
-    font-size:11px;
-
-    font-weight:600;
-
-    letter-spacing:.05em;
-
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-}
-
-
-/* =========================================================
-   MÓVIL
-========================================================= */
-
-@media(max-width:600px){
-
-    .photo-carousel{
-        width:fit-content;
-
-        max-width:100%;
-    }
-
-
-    .photo-carousel-window{
-        width:fit-content;
-
-        max-width:100%;
-    }
-
-
-    .photo-carousel-window .photo{
-        width:auto;
-
-        height:auto;
-
-        max-width:100%;
-    }
-
-
-    .photo-carousel-window .photo.active{
-        width:auto;
-
-        height:auto;
-
-        max-width:100%;
-    }
-
-
-    .photo-carousel-window .photo img{
-        width:auto;
-
-        height:auto;
-
-        max-width:100%;
-
-        max-height:75svh;
-
-        object-fit:contain;
-
-        margin:0 auto;
-    }
-
-
-    .carousel-arrow{
-        width:40px;
-
-        height:40px;
-    }
-
-
-    .carousel-prev{
-        left:8px;
-    }
-
-
-    .carousel-next{
-        right:8px;
-    }
-
-
-    .carousel-counter{
-        right:10px;
 :root{
     --plum:#91abc0;
     --plum-2:#58758c;
@@ -419,6 +124,7 @@ img{
     display:flex;
 
     align-items:flex-end;
+
     justify-content:center;
 
     overflow:hidden;
@@ -432,6 +138,7 @@ img{
     inset:0;
 
     width:100%;
+
     height:100%;
 
     object-fit:cover;
@@ -718,42 +425,23 @@ h2{
 
 
 /* =========================================================
-   CARRUSEL DEFINITIVO
-   EL RECUADRO SE ADAPTA A LA FOTO
+   CARRUSEL
 ========================================================= */
 
 .photo-carousel{
     position:relative;
-
-    width:fit-content;
-
-    max-width:100%;
-
-    margin:
-        0
-        auto
-        var(--gap);
-
-    overflow:visible;
+    width:100%;
+    max-width:760px;
+    margin:0 auto 24px;
 }
 
 
-/* =========================================================
-   VENTANA
-========================================================= */
-
 .photo-carousel-window{
     position:relative;
-
-    display:block;
-
-    width:fit-content;
-
-    max-width:100%;
-
+    width:100%;
     height:auto;
 
-    margin:0 auto;
+    display:block;
 
     overflow:visible;
 
@@ -761,77 +449,58 @@ h2{
 }
 
 
-/* =========================================================
-   SLIDES
-========================================================= */
+/* Ocultar todas */
 
 .photo-carousel-window .photo{
     display:none;
 
     position:relative;
 
-    width:auto;
-
+    width:100%;
     height:auto;
-
-    max-width:100%;
-
-    overflow:visible;
 
     background:transparent;
 
-    border-radius:var(--radius);
+    overflow:visible;
 }
 
 
-/* =========================================================
-   FOTO ACTIVA
-========================================================= */
+/* Mostrar solo la activa */
 
 .photo-carousel-window .photo.active{
-    display:block;
+    display:flex;
 
-    width:auto;
-
+    width:100%;
     height:auto;
 
-    max-width:100%;
+    align-items:center;
+    justify-content:center;
 }
 
 
-/* =========================================================
-   IMAGEN DEL CARRUSEL
-========================================================= */
+/* FOTO */
 
 .photo-carousel-window .photo img{
     display:block;
 
-    position:relative;
-
     width:auto;
-
     height:auto;
 
     max-width:100%;
-
     max-height:78svh;
 
     object-fit:contain;
 
-    object-position:center;
-
     margin:0 auto;
 
-    border-radius:var(--radius);
+    border-radius:18px;
 
     box-shadow:
         0 20px 55px rgba(0,0,0,.25);
 }
 
 
-/* =========================================================
-   FLECHAS CARRUSEL
-========================================================= */
+/* FLECHAS */
 
 .carousel-arrow{
     position:absolute;
@@ -841,137 +510,94 @@ h2{
     z-index:50;
 
     width:44px;
-
     height:44px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
-    padding:0;
-
-    border:
-        1px solid
-        rgba(255,255,255,.38);
+    border:1px solid rgba(255,255,255,.4);
 
     border-radius:50%;
 
-    background:
-        rgba(8,16,35,.82);
+    background:rgba(8,16,35,.82);
 
     color:white;
 
     cursor:pointer;
 
-    transform:
-        translateY(-50%);
-
-    backdrop-filter:
-        blur(10px);
-
-    -webkit-backdrop-filter:
-        blur(10px);
-
-    box-shadow:
-        0
-        8px
-        26px
-        rgba(0,0,0,.25);
-
-    transition:
-        background .2s ease,
-        border-color .2s ease,
-        transform .2s ease;
+    transform:translateY(-50%);
 }
 
 .carousel-prev{
-    left:-22px;
+    left:10px;
 }
 
 .carousel-next{
-    right:-22px;
-}
-
-.carousel-arrow:hover{
-    background:
-        rgba(73,89,160,.95);
-
-    border-color:
-        rgba(255,255,255,.8);
-}
-
-.carousel-arrow:active{
-    transform:
-        translateY(-50%)
-        scale(.92);
-}
-
-.carousel-arrow svg{
-    width:18px;
-
-    height:18px;
-
-    display:block;
-
-    fill:none;
-
-    stroke:currentColor;
-
-    stroke-width:2;
-
-    stroke-linecap:round;
-
-    stroke-linejoin:round;
+    right:10px;
 }
 
 
-/* =========================================================
-   CONTADOR CARRUSEL
-========================================================= */
+/* CONTADOR */
 
 .carousel-counter{
     position:absolute;
 
-    right:12px;
-
-    bottom:12px;
-
     z-index:50;
 
-    display:flex;
-
-    align-items:center;
-
-    gap:4px;
+    right:12px;
+    bottom:12px;
 
     padding:7px 11px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.25);
-
     border-radius:999px;
 
-    background:
-        rgba(8,16,35,.82);
+    background:rgba(8,16,35,.82);
 
     color:white;
 
     font-size:11px;
-
-    font-weight:600;
-
-    letter-spacing:.05em;
-
-    backdrop-filter:
-        blur(10px);
-
-    -webkit-backdrop-filter:
-        blur(10px);
 }
 
+
+/* MÓVIL */
+
+@media(max-width:600px){
+
+    .photo-carousel{
+        width:100%;
+    }
+
+    .photo-carousel-window{
+        width:100%;
+    }
+
+    .photo-carousel-window .photo.active{
+        width:100%;
+    }
+
+    .photo-carousel-window .photo img{
+        width:auto;
+        height:auto;
+
+        max-width:100%;
+        max-height:75svh;
+    }
+
+    .carousel-arrow{
+        width:40px;
+        height:40px;
+    }
+
+    .carousel-prev{
+        left:8px;
+    }
+
+    .carousel-next{
+        right:8px;
+    }
+
+}
 
 /* =========================================================
    FRASE
@@ -1336,10 +962,7 @@ h2{
         blur(14px);
 
     box-shadow:
-        0
-        20px
-        55px
-        rgba(52,74,92,.12);
+        0 20px 55px rgba(52,74,92,.12);
 }
 
 .letter-label{
@@ -1509,22 +1132,17 @@ h2{
 @media(max-width:600px){
 
     .container{
-        padding:
-            0
-            20px;
+        padding:0 20px;
     }
 
 
     .section{
-        padding:
-            72px
-            0;
+        padding:72px 0;
     }
 
 
     .section-header{
-        margin-bottom:
-            34px;
+        margin-bottom:34px;
     }
 
 
@@ -1551,23 +1169,27 @@ h2{
     }
 
 
-    /* =============================================
+    /* =====================================================
        CARRUSEL MÓVIL
-    ============================================= */
+    ===================================================== */
 
     .photo-carousel{
-        width:fit-content;
+        width:100%;
 
         max-width:100%;
     }
 
 
     .photo-carousel-window{
-        width:fit-content;
-
-        max-width:100%;
+        width:100%;
 
         height:auto;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
     }
 
 
@@ -1581,11 +1203,19 @@ h2{
 
 
     .photo-carousel-window .photo.active{
+        display:flex;
+
         width:auto;
 
         height:auto;
 
         max-width:100%;
+
+        margin:0 auto;
+
+        align-items:center;
+
+        justify-content:center;
     }
 
 
@@ -1600,13 +1230,15 @@ h2{
 
         object-fit:contain;
 
+        object-position:center;
+
         margin:0 auto;
     }
 
 
-    /* =============================================
+    /* =====================================================
        FLECHAS
-    ============================================= */
+    ===================================================== */
 
     .carousel-arrow{
         width:40px;
@@ -1625,9 +1257,9 @@ h2{
     }
 
 
-    /* =============================================
+    /* =====================================================
        CONTADOR
-    ============================================= */
+    ===================================================== */
 
     .carousel-counter{
         right:10px;
@@ -1636,9 +1268,9 @@ h2{
     }
 
 
-    /* =============================================
+    /* =====================================================
        CARTA
-    ============================================= */
+    ===================================================== */
 
     .letter{
         padding:
@@ -1647,9 +1279,9 @@ h2{
     }
 
 
-    /* =============================================
+    /* =====================================================
        DEDICATORIAS
-    ============================================= */
+    ===================================================== */
 
     .dedications-slider{
         grid-template-columns:1fr;
@@ -1668,8 +1300,4 @@ h2{
             24px
             20px;
     }
-}
-        bottom:10px;
-    }
-
 }
