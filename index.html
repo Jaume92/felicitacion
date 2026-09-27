@@ -1576,57 +1576,10 @@ h2{
 
         <!-- CARRUSEL -->
 
-        <div class="photo-carousel reveal">
+        <div class="photo-carousel reveal" data-gallery="viajes">
 
             <div class="photo-carousel-window">
 
-                <div class="photo active">
-                    <img
-                        src="images/viaje-01.jpeg"
-                        alt=""
-                        loading="lazy"
-                    >
-                </div>
-
-                <div class="photo">
-                    <img
-                        src="images/viaje-02.jpg"
-                        alt=""
-                        loading="lazy"
-                    >
-                </div>
-
-                <div class="photo">
-                    <img
-                        src="images/viaje-03.jpg"
-                        alt=""
-                        loading="lazy"
-                    >
-                </div>
-
-                <div class="photo">
-                    <img
-                        src="images/viaje-04.jpg"
-                        alt=""
-                        loading="lazy"
-                    >
-                </div>
-
-                                <div class="photo">
-                    <img
-                        src="images/viaje-05.jpg"
-                        alt=""
-                        loading="lazy"
-                    >
-                </div>
-
-                                                <div class="photo">
-                    <img
-                        src="images/viaje-06.jpg"
-                        alt=""
-                        loading="lazy"
-                    >
-                </div>
 
             </div>
 
@@ -2014,6 +1967,75 @@ h2{
 
 
 <script>
+
+
+const galerias = {
+
+    viajes: [
+        "viaje-01.jpeg",
+        "viaje-02.jpg",
+        "viaje-03.jpg",
+        "viaje-04.jpg",
+        "viaje-05.jpg",
+        "viaje-06.jpg",
+        "viaje-07.jpg",
+        "viaje-08.jpg",
+        "viaje-09.jpg",
+        "viaje-10.jpg",
+        "viaje-11.jpg",
+        "viaje-12.jpg",
+        "viaje-13.jpg",
+        "viaje-14.jpg",
+        "viaje-15.jpg",
+        "viaje-16.jpg"
+    ]
+
+};
+
+
+document.querySelectorAll("[data-gallery]").forEach(function(galeria){
+
+    const nombreGaleria = galeria.dataset.gallery;
+
+    const fotos = galerias[nombreGaleria];
+
+    const ventana =
+        galeria.querySelector(".photo-carousel-window");
+
+
+    fotos.forEach(function(foto, index){
+
+        const slide =
+            document.createElement("div");
+
+        slide.className =
+            index === 0
+                ? "photo active"
+                : "photo";
+
+
+        const imagen =
+            document.createElement("img");
+
+        imagen.src = "images/" + foto;
+
+        imagen.alt = "";
+
+        imagen.loading =
+            index === 0
+                ? "eager"
+                : "lazy";
+
+
+        slide.appendChild(imagen);
+
+        ventana.appendChild(slide);
+
+    });
+
+});
+
+
 
 (function(){
 
