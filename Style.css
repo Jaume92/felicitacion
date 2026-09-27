@@ -1,3 +1,298 @@
+/* =========================================================
+   CARRUSEL DEFINITIVO
+   EL MARCO SE ADAPTA A LA FOTO
+========================================================= */
+
+.photo-carousel{
+    position:relative;
+
+    width:fit-content;
+    max-width:100%;
+
+    margin:0 auto 24px;
+
+    overflow:visible;
+}
+
+
+/* =========================================================
+   VENTANA
+========================================================= */
+
+.photo-carousel-window{
+    position:relative;
+
+    width:fit-content;
+    max-width:100%;
+
+    height:auto;
+
+    margin:0 auto;
+
+    overflow:visible;
+
+    touch-action:pan-y;
+}
+
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+.photo-carousel-window .photo{
+    display:none;
+
+    position:relative;
+
+    width:auto;
+    height:auto;
+
+    max-width:100%;
+
+    overflow:visible;
+
+    background:transparent;
+
+    border-radius:18px;
+}
+
+
+/* FOTO ACTIVA */
+
+.photo-carousel-window .photo.active{
+    display:block;
+
+    width:auto;
+    height:auto;
+
+    max-width:100%;
+}
+
+
+/* =========================================================
+   IMAGEN
+========================================================= */
+
+.photo-carousel-window .photo img{
+    display:block;
+
+    position:relative;
+
+    width:auto;
+    height:auto;
+
+    max-width:100%;
+    max-height:78svh;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    margin:0 auto;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 18px 55px rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   FLECHAS
+========================================================= */
+
+.carousel-arrow{
+    position:absolute;
+
+    top:50%;
+
+    z-index:50;
+
+    width:44px;
+    height:44px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0;
+
+    border:1px solid rgba(255,255,255,.4);
+
+    border-radius:50%;
+
+    background:rgba(8,16,35,.82);
+
+    color:white;
+
+    cursor:pointer;
+
+    transform:translateY(-50%);
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.25);
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+
+.carousel-prev{
+    left:-22px;
+}
+
+
+.carousel-next{
+    right:-22px;
+}
+
+
+.carousel-arrow:hover{
+    background:rgba(73,89,160,.95);
+
+    border-color:rgba(255,255,255,.8);
+}
+
+
+.carousel-arrow:active{
+    transform:
+        translateY(-50%)
+        scale(.92);
+}
+
+
+.carousel-arrow svg{
+    width:18px;
+    height:18px;
+
+    display:block;
+
+    fill:none;
+
+    stroke:currentColor;
+
+    stroke-width:2;
+
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+
+/* =========================================================
+   CONTADOR
+========================================================= */
+
+.carousel-counter{
+    position:absolute;
+
+    right:12px;
+    bottom:12px;
+
+    z-index:50;
+
+    display:flex;
+    align-items:center;
+
+    gap:4px;
+
+    padding:7px 11px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:999px;
+
+    background:rgba(8,16,35,.8);
+
+    color:white;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    letter-spacing:.05em;
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media(max-width:600px){
+
+    .photo-carousel{
+        width:fit-content;
+
+        max-width:100%;
+    }
+
+
+    .photo-carousel-window{
+        width:fit-content;
+
+        max-width:100%;
+    }
+
+
+    .photo-carousel-window .photo{
+        width:auto;
+
+        height:auto;
+
+        max-width:100%;
+    }
+
+
+    .photo-carousel-window .photo.active{
+        width:auto;
+
+        height:auto;
+
+        max-width:100%;
+    }
+
+
+    .photo-carousel-window .photo img{
+        width:auto;
+
+        height:auto;
+
+        max-width:100%;
+
+        max-height:75svh;
+
+        object-fit:contain;
+
+        margin:0 auto;
+    }
+
+
+    .carousel-arrow{
+        width:40px;
+
+        height:40px;
+    }
+
+
+    .carousel-prev{
+        left:8px;
+    }
+
+
+    .carousel-next{
+        right:8px;
+    }
+
+
+    .carousel-counter{
+        right:10px;
 :root{
     --plum:#91abc0;
     --plum-2:#58758c;
@@ -7,7 +302,11 @@
     --rose:#bfd6e6;
     --ink:#344a5c;
     --line:rgba(255,255,255,.25);
-    --radius:2px;
+
+    --dark:#0b1428;
+    --dark-2:#111d38;
+
+    --radius:18px;
     --gap:24px;
 }
 
@@ -27,24 +326,16 @@ html{
     scroll-padding-top:env(safe-area-inset-top,0px);
 }
 
-@media (prefers-reduced-motion:reduce){
-
-    html{
-        scroll-behavior:auto;
-    }
-
-    *{
-        animation-duration:.01ms!important;
-        transition-duration:.01ms!important;
-    }
-}
-
 body{
     font-family:'DM Sans',sans-serif;
+
     background:var(--cream);
+
     color:var(--ink);
+
     padding-top:env(safe-area-inset-top,0px);
     padding-bottom:env(safe-area-inset-bottom,0px);
+
     overflow-x:hidden;
 }
 
@@ -56,14 +347,38 @@ blockquote{
 }
 
 img{
-    max-width:100%;
     display:block;
+    max-width:100%;
 }
 
 .container{
+    width:100%;
+
     max-width:760px;
+
     margin:0 auto;
+
     padding:0 28px;
+}
+
+
+/* =========================================================
+   REDUCIR ANIMACIONES
+========================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *{
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        transition-duration:.01ms !important;
+    }
 }
 
 
@@ -73,20 +388,21 @@ img{
 
 .photo{
     position:relative;
+
     overflow:hidden;
+
     border-radius:var(--radius);
+
     background:var(--cream-2);
 }
 
-/*
-   Esto se mantiene para las fotos normales de la web.
-   El carrusel tendrá sus propias reglas más abajo.
-*/
-
 .photo img{
     width:100%;
+
     height:100%;
+
     object-fit:cover;
+
     display:block;
 }
 
@@ -97,44 +413,62 @@ img{
 
 .hero{
     min-height:100svh;
+
     position:relative;
+
     display:flex;
+
     align-items:flex-end;
+    justify-content:center;
+
     overflow:hidden;
-    background:var(--plum-2);
+
+    background:var(--dark);
 }
 
 .hero-image{
     position:absolute;
+
     inset:0;
+
     width:100%;
     height:100%;
+
     object-fit:cover;
 }
 
 .hero::after{
     content:'';
+
     position:absolute;
+
     inset:0;
 
     background:
         linear-gradient(
             to top,
-            rgba(52,74,92,.92) 0%,
-            rgba(88,117,140,.52) 45%,
-            rgba(145,171,192,.15) 100%
+            rgba(5,10,25,.95) 0%,
+            rgba(20,32,62,.60) 45%,
+            rgba(70,80,140,.15) 100%
         );
 }
 
 .hero-content{
     position:relative;
+
     z-index:2;
+
+    width:100%;
+
+    max-width:760px;
+
+    margin:0 auto;
 
     padding:0 28px 64px;
 
-    max-width:640px;
-
     color:var(--cream);
+
+    text-align:center;
 
     animation:rise .9s .1s both ease-out;
 }
@@ -143,39 +477,57 @@ img{
 
     from{
         opacity:0;
+
         transform:translateY(18px);
     }
 
     to{
         opacity:1;
+
         transform:none;
     }
 }
 
 .small-title{
     font-size:12.5px;
-    letter-spacing:.14em;
-    color:var(--gold);
+
+    letter-spacing:.16em;
+
+    color:#a895ff;
+
     font-weight:600;
+
+    text-transform:uppercase;
 }
 
 .hero h1{
-    font-size:clamp(34px,7vw,58px);
+    font-size:clamp(36px,7vw,60px);
+
     font-weight:500;
-    line-height:1.08;
-    margin:14px 0 18px;
+
+    line-height:1.06;
+
+    margin:14px auto 18px;
+
+    max-width:650px;
 }
 
 .hero h1 span{
     font-style:italic;
-    color:var(--cream-2);
+
+    color:#c7cfff;
 }
 
 .hero p{
     font-size:16.5px;
-    line-height:1.6;
+
+    line-height:1.65;
+
     color:rgba(251,252,254,.85);
-    max-width:440px;
+
+    max-width:520px;
+
+    margin:0 auto;
 }
 
 .button{
@@ -183,9 +535,9 @@ img{
 
     margin-top:30px;
 
-    padding:13px 26px;
+    padding:13px 28px;
 
-    border:1px solid rgba(255,255,255,.55);
+    border:1px solid rgba(255,255,255,.35);
 
     color:var(--cream);
 
@@ -193,20 +545,34 @@ img{
 
     font-size:14px;
 
-    letter-spacing:.02em;
+    letter-spacing:.03em;
 
-    border-radius:var(--radius);
+    border-radius:999px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    -webkit-backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.15);
 
     transition:
-        background .25s,
-        color .25s,
-        border-color .25s;
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
 }
 
 .button:hover{
     background:var(--cream);
-    color:var(--plum-2);
+
+    color:var(--dark);
+
     border-color:var(--cream);
+
+    transform:translateY(-2px);
 }
 
 
@@ -219,55 +585,105 @@ img{
 }
 
 .section-dark{
-    background:var(--plum-2);
+    position:relative;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(109,89,255,.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #101a34 0%,
+            #091225 100%
+        );
+
     color:var(--cream);
 }
 
 .section-dark .subtitle{
-    color:rgba(251,252,254,.68);
+    color:rgba(251,252,254,.65);
 }
 
 .section-header{
     margin-bottom:44px;
+
+    text-align:center;
 }
 
 .chapter{
     font-size:12px;
-    letter-spacing:.1em;
-    color:var(--plum);
+
+    letter-spacing:.14em;
+
+    color:#748fa5;
+
     font-weight:600;
+
+    text-transform:uppercase;
 }
 
 .section-dark .chapter{
-    color:var(--gold);
+    color:#a895ff;
 }
 
 h2{
-    font-size:clamp(26px,4.4vw,36px);
+    font-size:clamp(28px,4.4vw,38px);
+
     font-weight:500;
-    margin-top:10px;
-    max-width:480px;
+
+    line-height:1.2;
+
+    margin:10px auto 0;
+
+    max-width:580px;
 }
 
 .subtitle{
-    margin-top:10px;
+    margin:10px auto 0;
+
     font-size:15px;
+
+    line-height:1.6;
+
     color:#71889a;
-    max-width:420px;
+
+    max-width:520px;
 }
 
 
 /* =========================================================
-   FOTOS PRINCIPALES
+   FOTO PRINCIPAL
 ========================================================= */
+
+.main-photo{
+    width:100%;
+
+    max-width:680px;
+
+    margin:0 auto;
+}
 
 .main-photo .photo{
     aspect-ratio:4/3;
+
+    border-radius:var(--radius);
+
+    box-shadow:
+        0 20px 50px rgba(52,74,92,.12);
 }
+
+
+/* =========================================================
+   DOS FOTOS
+========================================================= */
 
 .two-photos{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:14px;
 }
 
@@ -281,13 +697,18 @@ h2{
 ========================================================= */
 
 .text{
-    margin-top:36px;
-    max-width:520px;
+    margin:36px auto 0;
+
+    max-width:560px;
+
+    text-align:center;
 }
 
 .text p{
     font-size:16px;
+
     line-height:1.75;
+
     margin-bottom:14px;
 }
 
@@ -297,49 +718,42 @@ h2{
 
 
 /* =========================================================
-   CARRUSEL DE FOTOS
-
-   IMPORTANTE:
-   - acepta horizontal
-   - acepta vertical
-   - acepta cuadrada
-   - nunca recorta
-   - mantiene proporción original
+   CARRUSEL DEFINITIVO
+   EL RECUADRO SE ADAPTA A LA FOTO
 ========================================================= */
 
 .photo-carousel{
     position:relative;
 
-    width:100%;
+    width:fit-content;
 
-    margin-bottom:var(--gap);
+    max-width:100%;
 
-    border-radius:var(--radius);
-
-    background:transparent;
+    margin:
+        0
+        auto
+        var(--gap);
 
     overflow:visible;
 }
 
 
 /* =========================================================
-   VENTANA DEL CARRUSEL
+   VENTANA
 ========================================================= */
 
 .photo-carousel-window{
     position:relative;
 
-    width:100%;
+    display:block;
 
-    /*
-       NO usamos altura fija.
-       NO usamos aspect-ratio.
-       La fotografía activa decide la altura.
-    */
+    width:fit-content;
 
-    height:auto !important;
+    max-width:100%;
 
-    aspect-ratio:auto !important;
+    height:auto;
+
+    margin:0 auto;
 
     overflow:visible;
 
@@ -352,144 +766,71 @@ h2{
 ========================================================= */
 
 .photo-carousel-window .photo{
-    /*
-       Todas las fotografías están ocultas
-       excepto la que tenga .active
-    */
-
     display:none;
 
     position:relative;
 
-    width:100%;
+    width:auto;
 
-    height:auto !important;
+    height:auto;
 
-    min-height:0 !important;
-
-    aspect-ratio:auto !important;
+    max-width:100%;
 
     overflow:visible;
 
-    border-radius:var(--radius);
-
     background:transparent;
+
+    border-radius:var(--radius);
 }
 
 
 /* =========================================================
-   SLIDE ACTIVO
+   FOTO ACTIVA
 ========================================================= */
 
 .photo-carousel-window .photo.active{
-    display:flex;
+    display:block;
 
-    width:100%;
+    width:auto;
 
-    height:auto !important;
+    height:auto;
 
-    align-items:center;
-
-    justify-content:center;
+    max-width:100%;
 }
 
 
 /* =========================================================
    IMAGEN DEL CARRUSEL
-
-   ESTA REGLA PISA:
-   .photo img {
-       width:100%;
-       height:100%;
-       object-fit:cover;
-   }
-
-   Por eso usamos !important.
 ========================================================= */
 
 .photo-carousel-window .photo img{
+    display:block;
 
-    position:static !important;
+    position:relative;
 
-    display:block !important;
+    width:auto;
 
-    /*
-       MUY IMPORTANTE.
+    height:auto;
 
-       No obligamos a la imagen a ocupar
-       ni el ancho ni la altura.
+    max-width:100%;
 
-       Conserva su proporción real.
-    */
+    max-height:78svh;
 
-    width:auto !important;
+    object-fit:contain;
 
-    height:auto !important;
+    object-position:center;
 
+    margin:0 auto;
 
-    /*
-       Nunca puede superar el ancho
-       disponible del contenedor.
-    */
+    border-radius:var(--radius);
 
-    max-width:100% !important;
-
-
-    /*
-       Permitimos que una vertical sea alta,
-       pero sin superar el 80% de la pantalla.
-    */
-
-    max-height:80vh !important;
-
-
-    /*
-       Eliminamos cualquier proporción
-       heredada.
-    */
-
-    aspect-ratio:auto !important;
-
-
-    /*
-       CONTAIN = mostrar TODO.
-       Nunca recortar.
-    */
-
-    object-fit:contain !important;
-
-    object-position:center center !important;
-
-
-    /*
-       Centrar horizontalmente.
-    */
-
-    margin-left:auto !important;
-
-    margin-right:auto !important;
-
-
-    /*
-       Eliminamos posibles transformaciones
-       del carrusel anterior.
-    */
-
-    transform:none !important;
-
-    inset:auto !important;
-
-
-    opacity:1 !important;
-
-    visibility:visible !important;
-
-    pointer-events:auto;
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.25);
 }
 
 
 /* =========================================================
-   FLECHAS
+   FLECHAS CARRUSEL
 ========================================================= */
 
 .carousel-arrow{
@@ -497,10 +838,11 @@ h2{
 
     top:50%;
 
-    z-index:20;
+    z-index:50;
 
-    width:42px;
-    height:42px;
+    width:44px;
+
+    height:44px;
 
     display:flex;
 
@@ -510,40 +852,54 @@ h2{
 
     padding:0;
 
-    border:1px solid rgba(255,255,255,.55);
+    border:
+        1px solid
+        rgba(255,255,255,.38);
 
     border-radius:50%;
 
-    background:rgba(88,117,140,.72);
+    background:
+        rgba(8,16,35,.82);
 
-    color:var(--cream);
+    color:white;
 
     cursor:pointer;
 
-    transform:translateY(-50%);
+    transform:
+        translateY(-50%);
 
-    backdrop-filter:blur(8px);
+    backdrop-filter:
+        blur(10px);
 
-    -webkit-backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0
+        8px
+        26px
+        rgba(0,0,0,.25);
 
     transition:
         background .2s ease,
-        transform .2s ease,
-        border-color .2s ease;
+        border-color .2s ease,
+        transform .2s ease;
 }
 
 .carousel-prev{
-    left:12px;
+    left:-22px;
 }
 
 .carousel-next{
-    right:12px;
+    right:-22px;
 }
 
 .carousel-arrow:hover{
-    background:rgba(88,117,140,.95);
+    background:
+        rgba(73,89,160,.95);
 
-    border-color:rgba(255,255,255,.9);
+    border-color:
+        rgba(255,255,255,.8);
 }
 
 .carousel-arrow:active{
@@ -554,6 +910,7 @@ h2{
 
 .carousel-arrow svg{
     width:18px;
+
     height:18px;
 
     display:block;
@@ -571,17 +928,17 @@ h2{
 
 
 /* =========================================================
-   CONTADOR DEL CARRUSEL
+   CONTADOR CARRUSEL
 ========================================================= */
 
 .carousel-counter{
     position:absolute;
 
-    z-index:20;
-
     right:12px;
 
     bottom:12px;
+
+    z-index:50;
 
     display:flex;
 
@@ -591,23 +948,28 @@ h2{
 
     padding:7px 11px;
 
-    border:1px solid rgba(255,255,255,.25);
+    border:
+        1px solid
+        rgba(255,255,255,.25);
 
-    border-radius:100px;
+    border-radius:999px;
 
-    background:rgba(88,117,140,.76);
+    background:
+        rgba(8,16,35,.82);
 
-    color:var(--cream);
+    color:white;
 
-    font-size:.68rem;
+    font-size:11px;
 
     font-weight:600;
 
-    letter-spacing:.5px;
+    letter-spacing:.05em;
 
-    backdrop-filter:blur(8px);
+    backdrop-filter:
+        blur(10px);
 
-    -webkit-backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:
+        blur(10px);
 }
 
 
@@ -616,23 +978,35 @@ h2{
 ========================================================= */
 
 .quote-section{
-    background:var(--cream-2);
-    padding:80px 0;
+    padding:90px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e6eef7,
+            #edf1ff
+        );
 }
 
 .quote-section blockquote{
-    font-size:clamp(20px,3.4vw,28px);
+    position:relative;
+
+    font-size:
+        clamp(21px,3.4vw,29px);
+
     font-style:italic;
+
     font-weight:500;
+
     text-align:center;
 
-    max-width:560px;
+    max-width:600px;
 
     margin:0 auto;
 
-    line-height:1.5;
+    line-height:1.55;
 
-    color:var(--plum-2);
+    color:#4e6580;
 }
 
 
@@ -641,7 +1015,11 @@ h2{
 ========================================================= */
 
 .travel-info{
-    margin-top:30px;
+    margin:32px auto 0;
+
+    max-width:560px;
+
+    text-align:center;
 }
 
 .travel-info .year{
@@ -649,15 +1027,15 @@ h2{
 
     font-size:13px;
 
-    letter-spacing:.08em;
+    letter-spacing:.10em;
 
-    color:var(--gold);
+    color:#a895ff;
 
-    margin-bottom:6px;
+    margin-bottom:8px;
 }
 
 .travel-info h3{
-    font-size:22px;
+    font-size:23px;
 
     font-weight:500;
 
@@ -671,9 +1049,11 @@ h2{
 
     line-height:1.7;
 
-    color:rgba(251,252,254,.82);
+    color:rgba(251,252,254,.80);
 
-    max-width:440px;
+    max-width:500px;
+
+    margin:0 auto;
 }
 
 
@@ -686,15 +1066,15 @@ h2{
 
     font-size:13px;
 
-    letter-spacing:.08em;
+    letter-spacing:.10em;
 
-    color:var(--plum);
+    color:var(--plum-2);
 
     margin-bottom:6px;
 }
 
 .text h3{
-    font-size:22px;
+    font-size:23px;
 
     font-weight:500;
 
@@ -702,7 +1082,7 @@ h2{
 }
 
 .secondary-photo{
-    margin-top:26px;
+    margin:26px auto 0;
 
     max-width:320px;
 }
@@ -721,7 +1101,10 @@ h2{
 
     display:grid;
 
-    grid-template-columns:auto 1fr auto;
+    grid-template-columns:
+        auto
+        minmax(0,1fr)
+        auto;
 
     align-items:center;
 
@@ -729,15 +1112,18 @@ h2{
 }
 
 .dedication-arrow{
-    width:38px;
+    width:42px;
 
-    height:38px;
+    height:42px;
 
     border-radius:50%;
 
-    border:1px solid var(--line);
+    border:
+        1px solid
+        rgba(255,255,255,.18);
 
-    background:rgba(255,255,255,.04);
+    background:
+        rgba(255,255,255,.05);
 
     color:var(--cream);
 
@@ -749,16 +1135,24 @@ h2{
 
     justify-content:center;
 
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
     transition:
-        background .2s,
-        border-color .2s,
-        transform .2s;
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
 }
 
 .dedication-arrow:hover{
-    background:rgba(255,255,255,.12);
+    background:
+        rgba(255,255,255,.12);
 
-    border-color:rgba(255,255,255,.45);
+    border-color:
+        rgba(255,255,255,.45);
 }
 
 .dedication-arrow:active{
@@ -789,12 +1183,39 @@ h2{
     overflow:hidden;
 
     touch-action:pan-y;
+
+    padding:32px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:24px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+        inset
+        0
+        1px
+        0
+        rgba(255,255,255,.06);
 }
 
 .dedication-slide{
     display:none;
 
-    animation:dedicationIn .38s ease;
+    animation:
+        dedicationIn
+        .38s
+        ease;
 }
 
 .dedication-slide.active{
@@ -806,22 +1227,23 @@ h2{
     from{
         opacity:0;
 
-        transform:translateX(18px);
+        transform:
+            translateX(18px);
     }
 
     to{
         opacity:1;
 
-        transform:translateX(0);
+        transform:none;
     }
 }
 
 .dedication-label{
     font-size:11.5px;
 
-    letter-spacing:.12em;
+    letter-spacing:.14em;
 
-    color:var(--gold);
+    color:#a895ff;
 }
 
 .dedications-window blockquote{
@@ -841,7 +1263,8 @@ h2{
 .dedication-name{
     font-size:13.5px;
 
-    color:rgba(251,252,254,.65);
+    color:
+        rgba(251,252,254,.62);
 }
 
 .dedication-counter{
@@ -859,7 +1282,8 @@ h2{
 
     font-size:12.5px;
 
-    color:rgba(251,252,254,.58);
+    color:
+        rgba(251,252,254,.55);
 
     letter-spacing:.05em;
 }
@@ -869,7 +1293,8 @@ h2{
 
     height:1px;
 
-    background:var(--line);
+    background:
+        rgba(255,255,255,.22);
 }
 
 
@@ -878,36 +1303,55 @@ h2{
 ========================================================= */
 
 .letter-section{
-    background:var(--cream-2);
+    background:
+        linear-gradient(
+            135deg,
+            #e4edf4,
+            #eef1fa
+        );
 }
 
 .letter{
-    margin-top:8px;
-
-    background:var(--cream);
-
-    border:1px solid #cfdee9;
-
-    border-radius:var(--radius);
-
-    padding:44px 36px;
+    margin:8px auto 0;
 
     max-width:560px;
 
+    padding:44px 36px;
+
+    text-align:center;
+
+    background:
+        rgba(255,255,255,.78);
+
+    border:
+        1px solid
+        rgba(88,117,140,.18);
+
+    border-radius:24px;
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
     box-shadow:
-        0 14px 35px rgba(52,74,92,.07);
+        0
+        20px
+        55px
+        rgba(52,74,92,.12);
 }
 
 .letter-label{
     font-size:11.5px;
 
-    letter-spacing:.12em;
+    letter-spacing:.14em;
 
-    color:var(--plum);
+    color:#748fa5;
 }
 
 .letter h3{
-    font-size:24px;
+    font-size:25px;
 
     font-weight:500;
 
@@ -933,7 +1377,7 @@ h2{
 
     font-style:italic;
 
-    font-size:20px;
+    font-size:21px;
 
     color:var(--plum-2);
 }
@@ -958,7 +1402,7 @@ h2{
 
     overflow:hidden;
 
-    background:var(--plum-2);
+    background:var(--dark);
 }
 
 .final-image{
@@ -983,8 +1427,8 @@ h2{
     background:
         linear-gradient(
             to top,
-            rgba(52,74,92,.78),
-            rgba(88,117,140,.45)
+            rgba(5,10,25,.92),
+            rgba(20,32,62,.42)
         );
 }
 
@@ -996,14 +1440,17 @@ h2{
     color:var(--cream);
 
     padding:0 28px;
+
+    max-width:700px;
 }
 
 .final .small-title{
-    color:var(--gold);
+    color:#a895ff;
 }
 
 .final h2{
-    font-size:clamp(30px,5.6vw,44px);
+    font-size:
+        clamp(32px,5.6vw,48px);
 
     font-weight:500;
 
@@ -1013,7 +1460,8 @@ h2{
 .final p{
     font-size:17px;
 
-    color:rgba(251,252,254,.88);
+    color:
+        rgba(251,252,254,.88);
 }
 
 .final-text{
@@ -1027,7 +1475,8 @@ h2{
 
     font-size:15px;
 
-    color:rgba(251,252,254,.62);
+    color:
+        rgba(251,252,254,.60);
 }
 
 
@@ -1038,7 +1487,8 @@ h2{
 .reveal{
     opacity:0;
 
-    transform:translateY(16px);
+    transform:
+        translateY(16px);
 
     transition:
         opacity .7s ease,
@@ -1059,129 +1509,104 @@ h2{
 @media(max-width:600px){
 
     .container{
-        padding:0 20px;
+        padding:
+            0
+            20px;
     }
+
 
     .section{
-        padding:72px 0;
+        padding:
+            72px
+            0;
     }
+
 
     .section-header{
-        margin-bottom:34px;
+        margin-bottom:
+            34px;
     }
+
 
     .hero-content{
-        padding-left:22px;
-
-        padding-right:22px;
-
-        padding-bottom:50px;
+        padding:
+            0
+            22px
+            50px;
     }
+
+
+    .hero h1{
+        font-size:
+            clamp(
+                36px,
+                11vw,
+                52px
+            );
+    }
+
 
     .two-photos{
         gap:10px;
     }
 
 
-    /* =====================================================
+    /* =============================================
        CARRUSEL MÓVIL
-       MISMA LÓGICA:
-       vertical + horizontal sin recortar
-    ===================================================== */
+    ============================================= */
 
     .photo-carousel{
-        width:100%;
+        width:fit-content;
 
-        height:auto !important;
-
-        aspect-ratio:auto !important;
-
-        overflow:visible;
+        max-width:100%;
     }
 
 
     .photo-carousel-window{
-        width:100%;
+        width:fit-content;
 
-        height:auto !important;
+        max-width:100%;
 
-        aspect-ratio:auto !important;
-
-        overflow:visible;
+        height:auto;
     }
 
 
     .photo-carousel-window .photo{
-        width:100%;
+        width:auto;
 
-        height:auto !important;
+        height:auto;
 
-        min-height:0 !important;
-
-        aspect-ratio:auto !important;
-
-        overflow:visible;
+        max-width:100%;
     }
 
 
     .photo-carousel-window .photo.active{
-        display:flex;
+        width:auto;
 
-        width:100%;
+        height:auto;
 
-        height:auto !important;
-
-        align-items:center;
-
-        justify-content:center;
+        max-width:100%;
     }
 
 
     .photo-carousel-window .photo img{
-        position:static !important;
+        width:auto;
 
-        display:block !important;
+        height:auto;
 
-        /*
-           NO width:100%.
-           NO height:100%.
-        */
+        max-width:100%;
 
-        width:auto !important;
+        max-height:75svh;
 
-        height:auto !important;
+        object-fit:contain;
 
-        max-width:100% !important;
-
-        /*
-           Vertical:
-           hasta el 75% de la pantalla.
-
-           Horizontal:
-           se adapta al ancho.
-        */
-
-        max-height:75svh !important;
-
-        aspect-ratio:auto !important;
-
-        object-fit:contain !important;
-
-        object-position:center center !important;
-
-        margin-left:auto !important;
-
-        margin-right:auto !important;
-
-        transform:none !important;
-
-        inset:auto !important;
-
-        opacity:1 !important;
-
-        visibility:visible !important;
+        margin:0 auto;
     }
 
+
+    /* =============================================
+       FLECHAS
+    ============================================= */
 
     .carousel-arrow{
         width:40px;
@@ -1191,14 +1616,18 @@ h2{
 
 
     .carousel-prev{
-        left:10px;
+        left:8px;
     }
 
 
     .carousel-next{
-        right:10px;
+        right:8px;
     }
 
+
+    /* =============================================
+       CONTADOR
+    ============================================= */
 
     .carousel-counter{
         right:10px;
@@ -1207,10 +1636,20 @@ h2{
     }
 
 
+    /* =============================================
+       CARTA
+    ============================================= */
+
     .letter{
-        padding:32px 22px;
+        padding:
+            32px
+            22px;
     }
 
+
+    /* =============================================
+       DEDICATORIAS
+    ============================================= */
 
     .dedications-slider{
         grid-template-columns:1fr;
@@ -1221,6 +1660,16 @@ h2{
 
     .dedication-arrow{
         display:none;
+    }
+
+
+    .dedications-window{
+        padding:
+            24px
+            20px;
+    }
+}
+        bottom:10px;
     }
 
 }
