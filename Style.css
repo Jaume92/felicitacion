@@ -1,0 +1,1226 @@
+:root{
+    --plum:#91abc0;
+    --plum-2:#58758c;
+    --cream:#fbfcfe;
+    --cream-2:#e4edf4;
+    --gold:#e8d3aa;
+    --rose:#bfd6e6;
+    --ink:#344a5c;
+    --line:rgba(255,255,255,.25);
+    --radius:2px;
+    --gap:24px;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:env(safe-area-inset-top,0px);
+}
+
+@media (prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *{
+        animation-duration:.01ms!important;
+        transition-duration:.01ms!important;
+    }
+}
+
+body{
+    font-family:'DM Sans',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    overflow-x:hidden;
+}
+
+h1,
+h2,
+h3,
+blockquote{
+    font-family:'Fraunces',serif;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 28px;
+}
+
+
+/* =========================================================
+   FOTOS GENERALES
+========================================================= */
+
+.photo{
+    position:relative;
+    overflow:hidden;
+    border-radius:var(--radius);
+    background:var(--cream-2);
+}
+
+/*
+   Esto se mantiene para las fotos normales de la web.
+   El carrusel tendrá sus propias reglas más abajo.
+*/
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+
+/* =========================================================
+   PORTADA / HERO
+========================================================= */
+
+.hero{
+    min-height:100svh;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:var(--plum-2);
+}
+
+.hero-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(52,74,92,.92) 0%,
+            rgba(88,117,140,.52) 45%,
+            rgba(145,171,192,.15) 100%
+        );
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    padding:0 28px 64px;
+
+    max-width:640px;
+
+    color:var(--cream);
+
+    animation:rise .9s .1s both ease-out;
+}
+
+@keyframes rise{
+
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.small-title{
+    font-size:12.5px;
+    letter-spacing:.14em;
+    color:var(--gold);
+    font-weight:600;
+}
+
+.hero h1{
+    font-size:clamp(34px,7vw,58px);
+    font-weight:500;
+    line-height:1.08;
+    margin:14px 0 18px;
+}
+
+.hero h1 span{
+    font-style:italic;
+    color:var(--cream-2);
+}
+
+.hero p{
+    font-size:16.5px;
+    line-height:1.6;
+    color:rgba(251,252,254,.85);
+    max-width:440px;
+}
+
+.button{
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:13px 26px;
+
+    border:1px solid rgba(255,255,255,.55);
+
+    color:var(--cream);
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    letter-spacing:.02em;
+
+    border-radius:var(--radius);
+
+    transition:
+        background .25s,
+        color .25s,
+        border-color .25s;
+}
+
+.button:hover{
+    background:var(--cream);
+    color:var(--plum-2);
+    border-color:var(--cream);
+}
+
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+
+.section{
+    padding:96px 0;
+}
+
+.section-dark{
+    background:var(--plum-2);
+    color:var(--cream);
+}
+
+.section-dark .subtitle{
+    color:rgba(251,252,254,.68);
+}
+
+.section-header{
+    margin-bottom:44px;
+}
+
+.chapter{
+    font-size:12px;
+    letter-spacing:.1em;
+    color:var(--plum);
+    font-weight:600;
+}
+
+.section-dark .chapter{
+    color:var(--gold);
+}
+
+h2{
+    font-size:clamp(26px,4.4vw,36px);
+    font-weight:500;
+    margin-top:10px;
+    max-width:480px;
+}
+
+.subtitle{
+    margin-top:10px;
+    font-size:15px;
+    color:#71889a;
+    max-width:420px;
+}
+
+
+/* =========================================================
+   FOTOS PRINCIPALES
+========================================================= */
+
+.main-photo .photo{
+    aspect-ratio:4/3;
+}
+
+.two-photos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.two-photos .photo{
+    aspect-ratio:3/4;
+}
+
+
+/* =========================================================
+   TEXTOS
+========================================================= */
+
+.text{
+    margin-top:36px;
+    max-width:520px;
+}
+
+.text p{
+    font-size:16px;
+    line-height:1.75;
+    margin-bottom:14px;
+}
+
+.text p:last-child{
+    margin-bottom:0;
+}
+
+
+/* =========================================================
+   CARRUSEL DE FOTOS
+
+   IMPORTANTE:
+   - acepta horizontal
+   - acepta vertical
+   - acepta cuadrada
+   - nunca recorta
+   - mantiene proporción original
+========================================================= */
+
+.photo-carousel{
+    position:relative;
+
+    width:100%;
+
+    margin-bottom:var(--gap);
+
+    border-radius:var(--radius);
+
+    background:transparent;
+
+    overflow:visible;
+}
+
+
+/* =========================================================
+   VENTANA DEL CARRUSEL
+========================================================= */
+
+.photo-carousel-window{
+    position:relative;
+
+    width:100%;
+
+    /*
+       NO usamos altura fija.
+       NO usamos aspect-ratio.
+       La fotografía activa decide la altura.
+    */
+
+    height:auto !important;
+
+    aspect-ratio:auto !important;
+
+    overflow:visible;
+
+    touch-action:pan-y;
+}
+
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+.photo-carousel-window .photo{
+    /*
+       Todas las fotografías están ocultas
+       excepto la que tenga .active
+    */
+
+    display:none;
+
+    position:relative;
+
+    width:100%;
+
+    height:auto !important;
+
+    min-height:0 !important;
+
+    aspect-ratio:auto !important;
+
+    overflow:visible;
+
+    border-radius:var(--radius);
+
+    background:transparent;
+}
+
+
+/* =========================================================
+   SLIDE ACTIVO
+========================================================= */
+
+.photo-carousel-window .photo.active{
+    display:flex;
+
+    width:100%;
+
+    height:auto !important;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+/* =========================================================
+   IMAGEN DEL CARRUSEL
+
+   ESTA REGLA PISA:
+   .photo img {
+       width:100%;
+       height:100%;
+       object-fit:cover;
+   }
+
+   Por eso usamos !important.
+========================================================= */
+
+.photo-carousel-window .photo img{
+
+    position:static !important;
+
+    display:block !important;
+
+    /*
+       MUY IMPORTANTE.
+
+       No obligamos a la imagen a ocupar
+       ni el ancho ni la altura.
+
+       Conserva su proporción real.
+    */
+
+    width:auto !important;
+
+    height:auto !important;
+
+
+    /*
+       Nunca puede superar el ancho
+       disponible del contenedor.
+    */
+
+    max-width:100% !important;
+
+
+    /*
+       Permitimos que una vertical sea alta,
+       pero sin superar el 80% de la pantalla.
+    */
+
+    max-height:80vh !important;
+
+
+    /*
+       Eliminamos cualquier proporción
+       heredada.
+    */
+
+    aspect-ratio:auto !important;
+
+
+    /*
+       CONTAIN = mostrar TODO.
+       Nunca recortar.
+    */
+
+    object-fit:contain !important;
+
+    object-position:center center !important;
+
+
+    /*
+       Centrar horizontalmente.
+    */
+
+    margin-left:auto !important;
+
+    margin-right:auto !important;
+
+
+    /*
+       Eliminamos posibles transformaciones
+       del carrusel anterior.
+    */
+
+    transform:none !important;
+
+    inset:auto !important;
+
+
+    opacity:1 !important;
+
+    visibility:visible !important;
+
+    pointer-events:auto;
+}
+
+
+/* =========================================================
+   FLECHAS
+========================================================= */
+
+.carousel-arrow{
+    position:absolute;
+
+    top:50%;
+
+    z-index:20;
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:0;
+
+    border:1px solid rgba(255,255,255,.55);
+
+    border-radius:50%;
+
+    background:rgba(88,117,140,.72);
+
+    color:var(--cream);
+
+    cursor:pointer;
+
+    transform:translateY(-50%);
+
+    backdrop-filter:blur(8px);
+
+    -webkit-backdrop-filter:blur(8px);
+
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        border-color .2s ease;
+}
+
+.carousel-prev{
+    left:12px;
+}
+
+.carousel-next{
+    right:12px;
+}
+
+.carousel-arrow:hover{
+    background:rgba(88,117,140,.95);
+
+    border-color:rgba(255,255,255,.9);
+}
+
+.carousel-arrow:active{
+    transform:
+        translateY(-50%)
+        scale(.92);
+}
+
+.carousel-arrow svg{
+    width:18px;
+    height:18px;
+
+    display:block;
+
+    fill:none;
+
+    stroke:currentColor;
+
+    stroke-width:2;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+}
+
+
+/* =========================================================
+   CONTADOR DEL CARRUSEL
+========================================================= */
+
+.carousel-counter{
+    position:absolute;
+
+    z-index:20;
+
+    right:12px;
+
+    bottom:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    padding:7px 11px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:100px;
+
+    background:rgba(88,117,140,.76);
+
+    color:var(--cream);
+
+    font-size:.68rem;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+    backdrop-filter:blur(8px);
+
+    -webkit-backdrop-filter:blur(8px);
+}
+
+
+/* =========================================================
+   FRASE
+========================================================= */
+
+.quote-section{
+    background:var(--cream-2);
+    padding:80px 0;
+}
+
+.quote-section blockquote{
+    font-size:clamp(20px,3.4vw,28px);
+    font-style:italic;
+    font-weight:500;
+    text-align:center;
+
+    max-width:560px;
+
+    margin:0 auto;
+
+    line-height:1.5;
+
+    color:var(--plum-2);
+}
+
+
+/* =========================================================
+   VIAJES
+========================================================= */
+
+.travel-info{
+    margin-top:30px;
+}
+
+.travel-info .year{
+    display:block;
+
+    font-size:13px;
+
+    letter-spacing:.08em;
+
+    color:var(--gold);
+
+    margin-bottom:6px;
+}
+
+.travel-info h3{
+    font-size:22px;
+
+    font-weight:500;
+
+    margin-bottom:10px;
+
+    color:var(--cream);
+}
+
+.travel-info p{
+    font-size:15.5px;
+
+    line-height:1.7;
+
+    color:rgba(251,252,254,.82);
+
+    max-width:440px;
+}
+
+
+/* =========================================================
+   NOSOTROS
+========================================================= */
+
+.text .year{
+    display:block;
+
+    font-size:13px;
+
+    letter-spacing:.08em;
+
+    color:var(--plum);
+
+    margin-bottom:6px;
+}
+
+.text h3{
+    font-size:22px;
+
+    font-weight:500;
+
+    margin-bottom:12px;
+}
+
+.secondary-photo{
+    margin-top:26px;
+
+    max-width:320px;
+}
+
+.secondary-photo .photo{
+    aspect-ratio:1/1;
+}
+
+
+/* =========================================================
+   DEDICATORIAS
+========================================================= */
+
+.dedications-slider{
+    margin-top:40px;
+
+    display:grid;
+
+    grid-template-columns:auto 1fr auto;
+
+    align-items:center;
+
+    gap:18px;
+}
+
+.dedication-arrow{
+    width:38px;
+
+    height:38px;
+
+    border-radius:50%;
+
+    border:1px solid var(--line);
+
+    background:rgba(255,255,255,.04);
+
+    color:var(--cream);
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:
+        background .2s,
+        border-color .2s,
+        transform .2s;
+}
+
+.dedication-arrow:hover{
+    background:rgba(255,255,255,.12);
+
+    border-color:rgba(255,255,255,.45);
+}
+
+.dedication-arrow:active{
+    transform:scale(.92);
+}
+
+.dedication-arrow svg{
+    width:16px;
+
+    height:16px;
+
+    stroke:currentColor;
+
+    fill:none;
+
+    stroke-width:1.8;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+}
+
+.dedications-window{
+    position:relative;
+
+    min-height:190px;
+
+    overflow:hidden;
+
+    touch-action:pan-y;
+}
+
+.dedication-slide{
+    display:none;
+
+    animation:dedicationIn .38s ease;
+}
+
+.dedication-slide.active{
+    display:block;
+}
+
+@keyframes dedicationIn{
+
+    from{
+        opacity:0;
+
+        transform:translateX(18px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:translateX(0);
+    }
+}
+
+.dedication-label{
+    font-size:11.5px;
+
+    letter-spacing:.12em;
+
+    color:var(--gold);
+}
+
+.dedications-window blockquote{
+    font-size:19px;
+
+    font-weight:500;
+
+    font-style:italic;
+
+    line-height:1.55;
+
+    margin:14px 0 16px;
+
+    color:var(--cream);
+}
+
+.dedication-name{
+    font-size:13.5px;
+
+    color:rgba(251,252,254,.65);
+}
+
+.dedication-counter{
+    grid-column:1/-1;
+
+    margin-top:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    font-size:12.5px;
+
+    color:rgba(251,252,254,.58);
+
+    letter-spacing:.05em;
+}
+
+.counter-line{
+    width:40px;
+
+    height:1px;
+
+    background:var(--line);
+}
+
+
+/* =========================================================
+   CARTA
+========================================================= */
+
+.letter-section{
+    background:var(--cream-2);
+}
+
+.letter{
+    margin-top:8px;
+
+    background:var(--cream);
+
+    border:1px solid #cfdee9;
+
+    border-radius:var(--radius);
+
+    padding:44px 36px;
+
+    max-width:560px;
+
+    box-shadow:
+        0 14px 35px rgba(52,74,92,.07);
+}
+
+.letter-label{
+    font-size:11.5px;
+
+    letter-spacing:.12em;
+
+    color:var(--plum);
+}
+
+.letter h3{
+    font-size:24px;
+
+    font-weight:500;
+
+    margin:10px 0 20px;
+
+    color:var(--plum-2);
+}
+
+.letter p{
+    font-size:16px;
+
+    line-height:1.8;
+
+    margin-bottom:14px;
+
+    color:var(--ink);
+}
+
+.letter-signature{
+    margin-top:22px;
+
+    font-family:'Fraunces',serif;
+
+    font-style:italic;
+
+    font-size:20px;
+
+    color:var(--plum-2);
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final{
+    min-height:100svh;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    background:var(--plum-2);
+}
+
+.final-image{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+}
+
+.final::after{
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(52,74,92,.78),
+            rgba(88,117,140,.45)
+        );
+}
+
+.final-content{
+    position:relative;
+
+    z-index:2;
+
+    color:var(--cream);
+
+    padding:0 28px;
+}
+
+.final .small-title{
+    color:var(--gold);
+}
+
+.final h2{
+    font-size:clamp(30px,5.6vw,44px);
+
+    font-weight:500;
+
+    margin:16px 0 10px;
+}
+
+.final p{
+    font-size:17px;
+
+    color:rgba(251,252,254,.88);
+}
+
+.final-text{
+    display:block;
+
+    margin-top:28px;
+
+    font-style:italic;
+
+    font-family:'Fraunces',serif;
+
+    font-size:15px;
+
+    color:rgba(251,252,254,.62);
+}
+
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(16px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.reveal.in{
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media(max-width:600px){
+
+    .container{
+        padding:0 20px;
+    }
+
+    .section{
+        padding:72px 0;
+    }
+
+    .section-header{
+        margin-bottom:34px;
+    }
+
+    .hero-content{
+        padding-left:22px;
+
+        padding-right:22px;
+
+        padding-bottom:50px;
+    }
+
+    .two-photos{
+        gap:10px;
+    }
+
+
+    /* =====================================================
+       CARRUSEL MÓVIL
+       MISMA LÓGICA:
+       vertical + horizontal sin recortar
+    ===================================================== */
+
+    .photo-carousel{
+        width:100%;
+
+        height:auto !important;
+
+        aspect-ratio:auto !important;
+
+        overflow:visible;
+    }
+
+
+    .photo-carousel-window{
+        width:100%;
+
+        height:auto !important;
+
+        aspect-ratio:auto !important;
+
+        overflow:visible;
+    }
+
+
+    .photo-carousel-window .photo{
+        width:100%;
+
+        height:auto !important;
+
+        min-height:0 !important;
+
+        aspect-ratio:auto !important;
+
+        overflow:visible;
+    }
+
+
+    .photo-carousel-window .photo.active{
+        display:flex;
+
+        width:100%;
+
+        height:auto !important;
+
+        align-items:center;
+
+        justify-content:center;
+    }
+
+
+    .photo-carousel-window .photo img{
+        position:static !important;
+
+        display:block !important;
+
+        /*
+           NO width:100%.
+           NO height:100%.
+        */
+
+        width:auto !important;
+
+        height:auto !important;
+
+        max-width:100% !important;
+
+        /*
+           Vertical:
+           hasta el 75% de la pantalla.
+
+           Horizontal:
+           se adapta al ancho.
+        */
+
+        max-height:75svh !important;
+
+        aspect-ratio:auto !important;
+
+        object-fit:contain !important;
+
+        object-position:center center !important;
+
+        margin-left:auto !important;
+
+        margin-right:auto !important;
+
+        transform:none !important;
+
+        inset:auto !important;
+
+        opacity:1 !important;
+
+        visibility:visible !important;
+    }
+
+
+    .carousel-arrow{
+        width:40px;
+
+        height:40px;
+    }
+
+
+    .carousel-prev{
+        left:10px;
+    }
+
+
+    .carousel-next{
+        right:10px;
+    }
+
+
+    .carousel-counter{
+        right:10px;
+
+        bottom:10px;
+    }
+
+
+    .letter{
+        padding:32px 22px;
+    }
+
+
+    .dedications-slider{
+        grid-template-columns:1fr;
+
+        gap:14px;
+    }
+
+
+    .dedication-arrow{
+        display:none;
+    }
+
+}
