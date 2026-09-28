@@ -2248,12 +2248,8 @@ id="final-cierre">
 
 <!-- MÚSICA -->
 
-
-<audio
-id="musica"
-loop>
-</audio>
-
+<audio id="musica" loop></audio>
+<audio id="musica-carta"></audio>
 
 <button
 class="music-btn"
@@ -2263,9 +2259,6 @@ type="button">
 ♫ Música
 
 </button>
-
-
-
 
 <script>
 
@@ -2710,9 +2703,10 @@ final:{
 
 
 musica:
-"music/cancion.mp3"
+"music/cancion.mp3",
 
-
+musicaCarta:
+"music/carta.mp3"
 
 };
 
@@ -3407,86 +3401,85 @@ ponerImagen(
    MÚSICA
 ================================ */
 
-
 const musica =
-
     document.getElementById(
         "musica"
     );
 
+const musicaCarta =
+    document.getElementById(
+        "musica-carta"
+    );
 
 const botonMusica =
-
     document.getElementById(
         "boton-musica"
     );
 
-
 musica.src =
     CONTENIDO.musica;
 
+musicaCarta.src =
+    CONTENIDO.musicaCarta;
+
+let musicaIniciada = false;
 
 
 botonMusica
-
 .addEventListener(
-
     "click",
 
     function(){
 
-
         if(musica.paused){
 
+            if(!musicaIniciada){
+
+                musica.currentTime = 16;
+                musicaIniciada = true;
+
+            }
 
             musica
             .play()
             .catch(function(){});
 
-
             botonMusica.textContent =
                 "❚❚ Pausar";
 
-
         }
-
 
         else{
 
-
             musica.pause();
-
 
             botonMusica.textContent =
                 "♫ Música";
 
-
         }
 
-
     }
-
 );
-
 
 
 /* Al pulsar EMPEZAR
    intenta iniciar la música */
 
-
 document
-
 .getElementById("empezar")
-
 .addEventListener(
-
     "click",
 
     function(){
 
+        if(!musicaIniciada){
+
+            musica.currentTime = 16;
+            musicaIniciada = true;
+
+        }
 
         musica
-
         .play()
 
         .then(function(){
@@ -3498,11 +3491,36 @@ document
 
         .catch(function(){});
 
-
     }
-
 );
 
+
+/* Al pulsar EMPEZAR
+   intenta iniciar la música */
+
+document
+.getElementById("empezar")
+.addEventListener(
+    "click",
+
+    function(){
+
+        musica.currentTime = 16;
+
+        musica
+        .play()
+
+        .then(function(){
+
+            botonMusica.textContent =
+                "❚❚ Pausar";
+
+        })
+
+        .catch(function(){});
+
+    }
+);
 
 
 /* ==============================
@@ -4470,68 +4488,60 @@ document
 
 
 const sobre =
-
     document.getElementById(
         "sobre"
     );
 
-
 const carta =
-
     document.getElementById(
         "carta-abierta"
     );
 
-
-
 sobre
-
 .addEventListener(
-
     "click",
 
     function(evento){
 
-
         confeti(
-
             evento.clientX,
-
             evento.clientY,
-
             34
-
         );
 
+        /* PARA LA CANCIÓN PRINCIPAL */
+        musica.pause();
 
+        /* EMPIEZA LA CANCIÓN DE LA CARTA */
+        musicaCarta.currentTime = 40;
+
+        musicaCarta.volume = 0.7;
+
+        musicaCarta
+        .play()
+        .catch(function(){});
+
+        botonMusica.textContent =
+            "♫ Música";
+
+        /* ABRE LA CARTA */
         sobre.style.display =
             "none";
 
-
         carta.style.display =
             "block";
-
 
         carta.classList.add(
             "opened"
         );
 
-
         carta.scrollIntoView({
-
             behavior:"smooth",
-
             block:"center"
-
         });
 
-
     }
-
 );
-
-
-
 /* ==============================
    FINAL
 ================================ */
