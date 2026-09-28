@@ -346,17 +346,71 @@ img{
     transition:
         transform .2s;
 
+    position:relative;
+
+    animation:latido 1.6s infinite;
 }
-
-
 
 .button:hover{
 
     transform:
         translateY(-2px);
 
+    animation-play-state:paused;
 }
 
+@keyframes latido{
+
+    0%,
+    100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+
+        box-shadow:
+            0 12px 34px rgba(255,255,255,.2),
+            0 10px 30px rgba(0,0,0,.2);
+    }
+}
+
+.sonrisa{
+
+    position:fixed;
+
+    z-index:9999;
+
+    pointer-events:none;
+
+    font-size:22px;
+
+    animation:subirSonrisa 1.8s ease-out forwards;
+}
+
+@keyframes subirSonrisa{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateY(0)
+            scale(.5);
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translateY(-90px)
+            translateX(var(--movimiento))
+            scale(1.2);
+    }
+}
 
 
 /* ==============================

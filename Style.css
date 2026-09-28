@@ -350,8 +350,73 @@ img{
         color .25s ease,
         border-color .25s ease,
         transform .25s ease;
+
+    position:relative;
+
+    animation:latido 1.6s infinite;
 }
 
+.button:hover{
+    background:var(--cream);
+
+    color:var(--dark);
+
+    border-color:var(--cream);
+
+    transform:translateY(-2px);
+
+    animation-play-state:paused;
+}
+
+@keyframes latido{
+    0%,
+    100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.07);
+
+        box-shadow:
+            0 10px 36px rgba(255,255,255,.18),
+            0 8px 30px rgba(0,0,0,.15);
+    }
+}
+
+.sonrisa{
+    position:fixed;
+
+    z-index:9999;
+
+    pointer-events:none;
+
+    font-size:21px;
+
+    animation:subirSonrisa 1.8s ease-out forwards;
+}
+
+@keyframes subirSonrisa{
+    0%{
+        opacity:0;
+
+        transform:
+            translateY(0)
+            scale(.5);
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translateY(-90px)
+            translateX(var(--movimiento))
+            scale(1.2);
+    }
+}
 .button:hover{
     background:var(--cream);
 
