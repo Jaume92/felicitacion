@@ -3270,64 +3270,118 @@ crearFotos(
    DEDICATORIAS
 ================================ */
 
-
 const listaDedicatorias =
-
     document.getElementById(
         "dedicatorias-lista"
     );
 
 
-
 CONTENIDO.dedicatorias
-
 .forEach(function(dedicatoria){
-
 
     const tarjeta =
         document.createElement("article");
-
 
     tarjeta.className =
         "slide";
 
 
-    tarjeta.innerHTML =
-
-    `
-
-    <span class="dedication-label">
-
-        ${dedicatoria.nombre}
-
-    </span>
+    let contenido = "";
 
 
-    <blockquote>
+    /* TEXTO */
+    if(dedicatoria.tipo === "texto"){
 
-        “${dedicatoria.texto}”
+        contenido = `
+            <blockquote>
+                “${dedicatoria.texto}”
+            </blockquote>
+        `;
+    }
 
-    </blockquote>
+
+    /* IMAGEN */
+    if(dedicatoria.tipo === "imagen"){
+
+        contenido = `
+            <img
+                src="${dedicatoria.archivo}"
+                alt="Dedicatoria de ${dedicatoria.nombre}"
+                style="
+                    width:100%;
+                    max-height:500px;
+                    object-fit:contain;
+                    border-radius:18px;
+                    margin:22px auto;
+                "
+            >
+        `;
+    }
 
 
-    <span class="dedication-name">
+    /* AUDIO */
+    if(dedicatoria.tipo === "audio"){
 
-        ${dedicatoria.nombre}
+        contenido = `
+            <audio
+                controls
+                preload="metadata"
+                style="
+                    width:100%;
+                    margin:22px 0;
+                "
+            >
+                <source
+                    src="${dedicatoria.archivo}"
+                    type="audio/mpeg"
+                >
+            </audio>
+        `;
+    }
 
-    </span>
 
+    /* VIDEO */
+    if(dedicatoria.tipo === "video"){
+
+        contenido = `
+            <video
+                controls
+                playsinline
+                preload="metadata"
+                style="
+                    width:100%;
+                    max-height:500px;
+                    border-radius:18px;
+                    margin:22px 0;
+                "
+            >
+                <source
+                    src="${dedicatoria.archivo}"
+                    type="video/mp4"
+                >
+            </video>
+        `;
+    }
+
+
+    tarjeta.innerHTML = `
+        <span class="dedication-label">
+            ${dedicatoria.nombre}
+        </span>
+
+        ${contenido}
+
+        <span class="dedication-name">
+            ${dedicatoria.nombre}
+        </span>
     `;
 
 
     listaDedicatorias.appendChild(
-
         tarjeta
-
     );
 
-
 });
-
 
 
 /* ==============================
