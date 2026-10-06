@@ -1407,3 +1407,131 @@ h2{
             20px;
     }
 }
+
+/* =========================================================
+   FIX DEDICATORIAS - EVITAR TARJETAS ESTRECHAS / ROTAS
+========================================================= */
+
+.dedications-slider{
+    width:100%;
+    max-width:100%;
+
+    grid-template-columns:
+        42px
+        minmax(0, 1fr)
+        42px;
+}
+
+.dedications-window{
+    width:100%;
+    min-width:0;
+    max-width:100%;
+
+    height:auto;
+    min-height:0;
+
+    box-sizing:border-box;
+
+    overflow:hidden;
+}
+
+.dedication-slide{
+    display:none;
+
+    width:100%;
+    min-width:0;
+    max-width:100%;
+
+    box-sizing:border-box;
+}
+
+.dedication-slide.active{
+    display:block;
+}
+
+
+/* TEXTO */
+
+.dedications-window blockquote{
+    width:100%;
+    max-width:100%;
+
+    box-sizing:border-box;
+
+    overflow-wrap:break-word;
+    word-break:normal;
+
+    white-space:normal;
+}
+
+
+/* VIDEO */
+
+.dedication-slide video{
+    display:block;
+
+    width:100%;
+    max-width:700px;
+    height:auto;
+
+    margin:20px auto 0;
+
+    border-radius:16px;
+}
+
+
+/* AUDIO */
+
+.dedication-slide audio{
+    display:block;
+
+    width:100%;
+    max-width:600px;
+
+    margin:20px auto 0;
+}
+
+
+/* IMÁGENES */
+
+.dedication-slide img{
+    display:block;
+
+    width:auto;
+    max-width:100%;
+    max-height:600px;
+
+    margin:20px auto 0;
+
+    object-fit:contain;
+
+    border-radius:16px;
+}
+
+@media (max-width: 700px){
+
+    .dedications-slider{
+        grid-template-columns:
+            34px
+            minmax(0, 1fr)
+            34px;
+
+        gap:8px;
+    }
+
+    .dedication-arrow{
+        width:34px;
+        height:34px;
+    }
+
+    .dedications-window{
+        padding:22px 16px;
+        border-radius:18px;
+    }
+
+    .dedications-window blockquote{
+        font-size:17px;
+        line-height:1.5;
+    }
+
+}
