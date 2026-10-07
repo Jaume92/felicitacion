@@ -2247,7 +2247,7 @@ id="final-cierre">
 <!-- MÚSICA -->
 
 <audio id="musica" loop></audio>
-<audio id="musica-carta"></audio>
+
 
 <button
 class="music-btn"
@@ -2740,7 +2740,7 @@ fotos:[
 
 
     lugar:
-    "Portugal , Noruega , Italia ",
+    "Portugal , Noruega , Italia , oporto ",
 
     texto:
     "y por mas viajes que nos quedan juntos! y sin entender como les puede gustar el agua con gas .. "
@@ -2919,6 +2919,12 @@ fotos:[
 dedicatorias: [
 
     {
+        nombre: "Papa y mama",
+        tipo: "texto",
+        texto: "Felicidades cariño,estamos muy orgullosos de tí,por la mujer en la que te has convertido,gran hermana e hija,y del gran esfuerzo que has hecho para lograr tus sueños."
+    },
+
+    {
         nombre: "Inma Marcos",
         tipo: "texto",
         texto: "Felicidades querida nuera, que tengas un día espléndido y feliz junto a mi hijo y los tuyos."
@@ -2947,6 +2953,12 @@ dedicatorias: [
         tipo: "texto",
         texto: "Natalia! Muchas felicidades!!! Espero que sigas cumpliendo años siendo la governanta y nos des pal’ pelo a todos. Un abrazo grande y por muchos años más!! 💃🏽🥳🥳"
     },
+
+    {
+        nombre: "marta trujillo",
+        tipo: "texto",
+        texto: "Hoy brindo por ti, por tus 33, por la vida compartida, por seguir estando, por el amor que te rodea, por la valentía que tienes, por los pequeños (grandes) sacrificios que se hicieron para llegar, creer y crecer, por las personas tan maravillosas que te han seguido en este camino llamado vida, para que podamos seguir compartiéndola contigo, a pesar de todo y todos, que cuando leas estas dedicatorias tengas el corazoncito bien llenito de amor, porque todo esto es por y para ti, porque te lo mereces, porque te haces querer mucho y bien ❤️ Feliz día y feliz VIDA!!"
+},
 
     {
         nombre: "Maria Canaria",
@@ -3088,8 +3100,7 @@ final:{
 musica:
 "music/cancion.mp3",
 
-musicaCarta:
-"music/carta.mp3"
+
 
 };
 
@@ -3843,7 +3854,6 @@ const musica =
         "musica"
     );
 
-const musicaCarta =
     document.getElementById(
         "musica-carta"
     );
@@ -3856,8 +3866,7 @@ const botonMusica =
 musica.src =
     CONTENIDO.musica;
 
-musicaCarta.src =
-    CONTENIDO.musicaCarta;
+
 
 let musicaIniciada = false;
 
@@ -4929,36 +4938,7 @@ sobre
         /* PARA LA CANCIÓN PRINCIPAL */
         musica.pause();
 
-        /* EMPIEZA LA CANCIÓN DE LA CARTA */
-        musicaCarta.currentTime = 40;
 
-        musicaCarta.volume = 0.7;
-
-        musicaCarta
-        .play()
-        .catch(function(){});
-
-        botonMusica.textContent =
-            "♫ Música";
-
-        /* ABRE LA CARTA */
-        sobre.style.display =
-            "none";
-
-        carta.style.display =
-            "block";
-
-        carta.classList.add(
-            "opened"
-        );
-
-        carta.scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-        });
-
-    }
-);
 /* ==============================
    FINAL
 ================================ */
