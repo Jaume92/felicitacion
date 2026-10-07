@@ -3763,35 +3763,51 @@ CONTENIDO.dedicatorias
    CARTA
 ================================ */
 
-
 ponerTexto(
-
     "carta-titulo",
-
     CONTENIDO.carta.titulo
-
 );
 
 
-ponerHTML(
+const cartaTexto =
+    document.getElementById(
+        "carta-texto"
+    );
 
-    "carta-texto",
 
-    crearParrafos(
-        CONTENIDO.carta.parrafos
-    )
+if(
+    CONTENIDO.carta.tipo === "video"
+){
 
-);
+    cartaTexto.innerHTML = `
+        <video
+            id="video-carta"
+            controls
+            playsinline
+            preload="metadata"
+            style="
+                display:block;
+                width:100%;
+                max-width:100%;
+                height:auto;
+                border-radius:18px;
+                background:#000;
+            "
+        >
+            <source
+                src="${CONTENIDO.carta.archivo}"
+                type="video/mp4"
+            >
+        </video>
+    `;
+
+}
 
 
 ponerTexto(
-
     "carta-firma",
-
     CONTENIDO.carta.firma
-
 );
-
 
 
 /* ==============================
