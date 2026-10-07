@@ -4912,7 +4912,6 @@ document
    SOBRE
 ================================ */
 
-
 const sobre =
     document.getElementById(
         "sobre"
@@ -4923,8 +4922,8 @@ const carta =
         "carta-abierta"
     );
 
-sobre
-.addEventListener(
+
+sobre.addEventListener(
     "click",
 
     function(evento){
@@ -4935,111 +4934,53 @@ sobre
             34
         );
 
-        /* PARA LA CANCIÓN PRINCIPAL */
+
+        /* PARAR MÚSICA GENERAL */
+
         musica.pause();
 
-
-/* ==============================
-   FINAL
-================================ */
+        botonMusica.textContent =
+            "♫ Música";
 
 
-const final =
+        /* ABRIR CARTA */
 
-    document.querySelector(
-        ".final"
-    );
+        sobre.style.display =
+            "none";
 
+        carta.style.display =
+            "block";
 
-
-if(
-
-    "IntersectionObserver"
-
-    in
-
-    window
-
-){
-
-
-    const observadorFinal =
-
-        new IntersectionObserver(
-
-            function(entradas){
-
-
-                if(
-
-                    entradas[0]
-                    .isIntersecting
-
-                ){
-
-
-                    confeti(
-
-                        window.innerWidth / 2,
-
-                        window.innerHeight * .4,
-
-                        40
-
-                    );
-
-
-                    observadorFinal.disconnect();
-
-
-                }
-
-
-            },
-
-            {
-
-                threshold:.6
-
-            }
-
+        carta.classList.add(
+            "opened"
         );
 
 
-    observadorFinal.observe(
-        final
-    );
+        /* REPRODUCIR SOLO EL VÍDEO */
+
+        const videoCarta =
+            document.getElementById(
+                "video-carta"
+            );
+
+        if(videoCarta){
+
+            videoCarta
+            .play()
+            .catch(function(){});
+
+        }
 
 
-}
+        carta.scrollIntoView({
 
+            behavior:"smooth",
+            block:"center"
 
-
-final
-
-.addEventListener(
-
-    "click",
-
-    function(evento){
-
-
-        confeti(
-
-            evento.clientX,
-
-            evento.clientY,
-
-            10
-
-        );
-
+        });
 
     }
-
 );
-
-
 
 /* ==============================
    ANIMACIONES AL HACER SCROLL
